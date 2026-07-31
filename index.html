@@ -179,10 +179,20 @@ async function loadAnime(){
     return;
   }
   ANIME = data;
+     renderHeroCollage();
   renderChips();
   renderGrid();
 }
 loadAnime();
+     function renderHeroCollage(){
+  const heroCollage = document.getElementById('heroCollage');
+  if(!heroCollage) return;
+  const posters = ANIME.map(a=>a.poster).filter(Boolean);
+  if(posters.length===0){ heroCollage.innerHTML=''; return; }
+  const tiles = [];
+  for(let i=0;i<12;i++){ tiles.push(posters[i % posters.length]); }
+  heroCollage.innerHTML = tiles.map(p=>`<img src="${p}">`).join('');
+     }
 
 /* ---------- live updates: refresh whenever the table changes ---------- */
 sb.channel('animes-live')
