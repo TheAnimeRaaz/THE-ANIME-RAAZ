@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<title>Rare Anime India</title>
+<title>The Anime Raaz</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -98,13 +98,19 @@
     .controls .search-box{max-width:500px; margin:0 auto;} .chips{justify-content:center;}
   }
   @media(min-width:900px){ .grid{grid-template-columns:repeat(4,1fr); max-width:1100px;} }
+     .hero{ position:relative; overflow:hidden; }
+.hero-collage{ position:absolute; inset:0; display:grid; grid-template-columns:repeat(4,1fr); z-index:0; opacity:0.35; filter:grayscale(20%); }
+.hero-collage img{ width:100%; height:100%; object-fit:cover; }
+.hero-collage::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(16,14,23,0.55), rgba(16,14,23,0.92) 70%); }
+.hero-watermark{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) rotate(-8deg); font-family:'Zen Kaku Gothic New',sans-serif; font-weight:900; font-size:3rem; letter-spacing:4px; text-transform:uppercase; color:transparent; -webkit-text-stroke:1.5px rgba(255,159,28,0.35); white-space:nowrap; z-index:1; pointer-events:none; }
+.hero > *:not(.hero-collage):not(.hero-watermark){ position:relative; z-index:2; }
 </style>
 </head>
 <body>
 
 <div class="tape"></div>
 <header>
-  <div class="brand"><span class="mark">Rare<span>Anime</span>IN</span></div>
+  <div class="brand"><span class="mark">The<span>Anime</span>Raaz</span></div>
   <div class="header-right">
     <span id="countPill" style="font-size:0.7rem;color:var(--muted);border:1px solid var(--line);padding:4px 10px;border-radius:100px;">0 titles</span>
     <div class="icon-btn" id="adminBtn" title="Admin">🔒</div>
@@ -112,6 +118,8 @@
 </header>
 
 <section class="hero">
+     <div class="hero-collage" id="heroCollage"></div>
+<div class="hero-watermark">Raaz Is Here</div>
   <div class="eyebrow">Deep cuts &amp; forgotten gems</div>
   <h1>The anime you<br><em>won't</em> find<br>on the home page.</h1>
   <p>A hand-picked shelf of obscure, cult, and hard-to-stream anime — curated for viewers in India.</p>
